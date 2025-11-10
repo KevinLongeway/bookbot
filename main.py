@@ -1,5 +1,6 @@
 from pathlib import Path
-from stats import get_num_words
+from stats import get_num_words, character_frequency, sorted_list
+count_characters = character_frequency
 
 def get_book_text(filepath: str) -> str:
     path = Path(filepath)
@@ -16,7 +17,14 @@ def main():
     except Exception as e:
         print(e)
         return
+    print("============ BOOKBOT ============")
+    print("Analyzing book found at books/frankenstein.txt...")
+    print("----------- Word Count ----------")
     print(f"Found {get_num_words(text)} total words")
+    print("--------- Character Count -------")
+    for item in sorted_list(text):
+        print(f"{item['char']}: {item['num']}")
+    print("============= END =============")
 
 # call main to execute the program
 main()
